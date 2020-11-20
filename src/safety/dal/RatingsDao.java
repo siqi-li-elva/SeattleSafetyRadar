@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
@@ -39,7 +40,9 @@ public class RatingsDao {
 		
 		try {
 			connection = connectionManager.getConnection();
-			insertStmt = connection.prepareStatement(insertRating);
+			insertStmt = connection.prepareStatement(insertRating,
+					Statement.RETURN_GENERATED_KEYS);
+			
 			insertStmt.setTimestamp(1, new Timestamp(rating.getCreatedTime().getTime()));
 			insertStmt.setDouble(2, rating.getRating());
 			insertStmt.setString(3, rating.getComment());

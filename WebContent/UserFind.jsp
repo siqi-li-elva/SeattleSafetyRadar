@@ -22,14 +22,12 @@
       			</div>
 				<input class="form-control mr-sm-2" id="firstname" name="firstname" value="${fn:escapeXml(param.firstname)}">
 				<button type="submit" class="btn btn-outline-success my-2 my-sm-0">Submit</button>
+				<a class="btn btn-outline-success my-2 my-sm-0" href="Homepage.jsp">Homepage</a>
 			</div>
-			<p>
-				<span id="successMessage"><b>${messages.success}</b></span>
-			</p>
 		</form>
 	</nav>
 	<br/>
-	<div id="userCreate"><a href="usercreate">Create App User</a></div>
+	<div id="userCreate"><a class="btn btn-primary" href="usercreate">Create App User</a></div>
 	<br/>
 	
 	<p>
@@ -77,6 +75,5 @@
                 </tr>
             </c:forEach>
        </table>
-
 </body>
 </html>

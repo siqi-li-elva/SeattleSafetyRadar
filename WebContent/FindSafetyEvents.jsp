@@ -31,7 +31,7 @@
 	</nav>
 	
 	<br/>
-	<div id="eventcreate"><a href="eventcreate">Create SafetyEvent</a></div>
+	<div id="eventcreate"><a class="btn btn-primary" href="eventcreate">Create SafetyEvent</a></div>
 	<br/>
 	
 	<br/>

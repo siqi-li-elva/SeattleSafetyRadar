@@ -4,9 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-//import java.sql.Timestamp;
-//import java.util.Date;
-
+import java.util.*;
 
 import safety.model.*;
 
@@ -28,7 +26,7 @@ public class NeighborhoodsDao {
     }
 
     public Neighborhoods create(Neighborhoods neighborhoods) throws SQLException {
-        String insertNeighborhoods = "INSERT INTO Neighborhoods(MCPP, Area, PoliceStation, policeStationAddress, distanceToPoliceStation,fireStatin,fireStationAddress,distanceToFireStation) "
+        String insertNeighborhoods = "INSERT INTO Neighborhoods(MCPP, Area, PoliceStation, policeStationAddress, distanceToPoliceStation,fireStation,fireStationAddress,distanceToFireStation) "
                 + "VALUES(?,?,?,?,?,?,?,?);";
         Connection connection = null;
         PreparedStatement insertStmt = null;
@@ -64,7 +62,7 @@ public class NeighborhoodsDao {
     }
 
     public Neighborhoods getNeighborhoodByMCPP(String MCPP) throws SQLException {
-        String selectNeighborhoods = "SELECT MCPP, Area, PoliceStation, policeStationAddress, distanceToPoliceStation,fireStatin,fireStationAddress,distanceToFireStation "
+        String selectNeighborhoods = "SELECT MCPP, Area, PoliceStation, policeStationAddress, distanceToPoliceStation,fireStation,fireStationAddress,distanceToFireStation "
                 + "FROM Neighborhoods " + "WHERE MCPP=?;";
         Connection connection = null;
         PreparedStatement selectStmt = null;
@@ -80,7 +78,7 @@ public class NeighborhoodsDao {
                 String policeStation = results.getString("PoliceStation");
                 String policeStationAddress = results.getString("policeStationAddress");
                 Double distanceToPoliceStation = results.getDouble("distanceToPoliceStation");
-                String fireStatin = results.getString("fireStatin");
+                String fireStatin = results.getString("fireStation");
                 String fireStationAddress = results.getString("fireStationAddress");
                 Double distanceToFireStation = results.getDouble("distanceToFireStation");
 
@@ -103,6 +101,49 @@ public class NeighborhoodsDao {
             }
         }
         return null;
+    }
+    
+    public List<Neighborhoods> getAllNeighborhood() throws SQLException {
+        String selectNeighborhoods = "SELECT MCPP, Area, PoliceStation, policeStationAddress, distanceToPoliceStation,fireStation,fireStationAddress,distanceToFireStation "
+                + "FROM Neighborhoods;";
+        Connection connection = null;
+        PreparedStatement selectStmt = null;
+        ResultSet results = null;
+        List<Neighborhoods> res = new ArrayList<>();
+        try {
+            connection = connectionManager.getConnection();
+            selectStmt = connection.prepareStatement(selectNeighborhoods);
+//            selectStmt.setString(1, MCPP);
+            results = selectStmt.executeQuery();
+            while (results.next()) {
+                String resultMCPP = results.getString("MCPP");
+                Long area = results.getLong("Area");
+                String policeStation = results.getString("PoliceStation");
+                String policeStationAddress = results.getString("policeStationAddress");
+                Double distanceToPoliceStation = results.getDouble("distanceToPoliceStation");
+                String fireStatin = results.getString("fireStation");
+                String fireStationAddress = results.getString("fireStationAddress");
+                Double distanceToFireStation = results.getDouble("distanceToFireStation");
+
+                Neighborhoods neighborhoods = new Neighborhoods(resultMCPP, area, policeStation, policeStationAddress,
+                        distanceToPoliceStation, fireStatin, fireStationAddress, distanceToFireStation);
+                res.add(neighborhoods);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw e;
+        } finally {
+            if (connection != null) {
+                connection.close();
+            }
+            if (selectStmt != null) {
+                selectStmt.close();
+            }
+            if (results != null) {
+                results.close();
+            }
+        }
+        return res;
     }
 
 }

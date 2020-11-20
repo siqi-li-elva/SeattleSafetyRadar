@@ -13,20 +13,22 @@
 
 </head>
 <body>
-	<h1>${messages.title}</h1>
-	<form action="userdelete" method="post">
-		<p>
-			<div <c:if test="${messages.disableSubmit}">style="display:none"</c:if>>
-				<label for="username">UserName</label>
-				<input id="username" name="username" value="${fn:escapeXml(param.username)}">
-			</div>
-		</p>
-		<p>
-			<span id="submitButton" <c:if test="${messages.disableSubmit}">style="display:none"</c:if>>
-			<input type="submit">
-			</span>
-		</p>
-	</form>
+	<p class="h1">${messages.title}</p>
+	<div class="container col-md-5">
+		<form action="userdelete" method="post">
+			<p>
+				<div class="form-group" <c:if test="${messages.disableSubmit}">style="display:none"</c:if>>
+					<label for="username">UserName</label>
+					<input id="username" class="form-control" name="username" value="${fn:escapeXml(param.username)}">
+				</div>
+			</p>
+			<p>
+				<button type="submit" class="btn btn-primary" <c:if test="${messages.disableSubmit}">style="display:none"</c:if>>Submit</button>
+				<a class="btn btn-primary" href="UserFind.jsp">User Find</a>
+			    <a class="btn btn-primary" href="Homepage.jsp">Homepage</a>
+			</p>
+		</form>
+	</div>
 	<br/><br/>
 
 </body>

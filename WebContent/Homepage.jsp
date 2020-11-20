@@ -17,14 +17,14 @@
             <div class="col-md-12">
             <!-- add navigation bar  -->
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                <a class="navbar-brand h1" href="#">Seattle Safety Radar</a>
+                <a class="navbar-brand h1" href="Homepage.jsp">Seattle Safety Radar</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="menu">
                     <div class="navbar-nav">
                         <a class="nav-item nav-link" href="FindSafetyEvents.jsp">SafetyEvents</a>
-                        <a class="nav-item nav-link" href="#">Neighborhoods</a>
+                        <a class="nav-item nav-link" href="NeighborhoodFind.jsp">Neighborhoods</a>
                         <a class="nav-item nav-link" href="UserFind.jsp">Users</a>
                         <a class="nav-item nav-link" href="ReviewFind.jsp">Reviews</a>
                         <a class="nav-item nav-link" href="RatingReport.jsp">Rating Report</a>

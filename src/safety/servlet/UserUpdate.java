@@ -59,8 +59,8 @@ public class UserUpdate extends HttpServlet {
     public void doPost(HttpServletRequest req, HttpServletResponse resp)
     		throws ServletException, IOException {
         // Map for storing messages.
-        Map<String, List<String>> messages = new HashMap<String, List<String>>();
-        List<String> successes = new ArrayList<String>();
+        Map<String, ArrayList<String>> messages = new HashMap<String, ArrayList<String>>();
+        ArrayList<String> successes = new ArrayList<String>();
         req.setAttribute("messages", messages);
 
         // Retrieve user and validate.
@@ -160,7 +160,8 @@ public class UserUpdate extends HttpServlet {
 	        }
         }
         // add all messages
-        messages.put("sucess", successes);
+        messages.put("success", successes);
+        req.setAttribute("messages", messages);
         req.getRequestDispatcher("/UserUpdate.jsp").forward(req, resp);
     }
 }

@@ -15,10 +15,10 @@ integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xX
 <body>
 	<nav class="navbar navbar-expand-md navbar-dark">
 			<div class="navbar-brand">
-				Create Safety Event
 			</div>
 	</nav>
-	<!-- <h1>Create Safety Event</h1> -->
+	<center><h1>Create Safety Event</h1></center>
+
 	<div class="container col-md-5">
 	<form action="eventcreate" method="post">
 		<div class="form-group">

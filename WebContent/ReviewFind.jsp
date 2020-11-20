@@ -31,7 +31,7 @@
 	</nav>
 	
 	<br/>
-	<div id="createreview"><a href="createreview">Create Review on SafetyEvent</a></div>
+	<div id="createreview"><a class="btn btn-primary" href="createreview">Create Review on SafetyEvent</a></div>
 	<br/>
 	
 	<br/>
